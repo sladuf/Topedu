@@ -1,0 +1,27 @@
+* {
+    font-family: "Noto Sans KR", sans-serif;
+  }
+
+html, body {
+    
+    height: 100%;
+}
+
+.wrap {
+    width: 90%;
+    height: 90%;
+    background-color: #6593cf;
+    margin: auto;
+    padding: 5%;
+    border-radius: 30px;
+    text-align: center;
+    border: none;
+    
+}
+
+.login{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
