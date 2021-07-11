@@ -12,7 +12,10 @@
     $row = $res->fetch_array(MYSQLI_ASSOC);
  
    if ($row != null) {
-       $_SESSION['id'] = $Id;   
+       $_SESSION['name'] = $row['name'];
+       $_SESSION['id'] = $Id;
+       $_SESSION['spot'] = $row['spot'];
+       $_SESSION['level'] = $row['level'];
        echo "<script>location.href='main_page.html';</script>";
         }
  
