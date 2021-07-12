@@ -17,9 +17,9 @@
         <div class='middle'>
             <img src="design/logo_red_name.png" style="width: 100%;" alt='logo'>
             <h2>Hello! <? echo $name; ?></h2>
-            <button class=lv_btn onclick="">
-                <? echo $level; ?>
-            </button>
+            <form method="GET" action='level_move.php'>
+                <input class='lv_btn' type="submit" value="<? echo $level; ?>" name='level_name'>
+            </form>
             <button class=lv_btn onclick="location.href='level_list.html'">
                 All level
             </button>

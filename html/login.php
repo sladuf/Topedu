@@ -21,7 +21,7 @@
  
    elseif($row == null){
      
-   print "<script language = javascript> alert(\"로그인 실패\");
+   print "<script language = javascript> alert(\"아이디 또는 비밀번호가 틀렸습니다.\");
            location.replace('../index.html');</script>" ;                                               
      //header('location:'.$prevpage);
        }

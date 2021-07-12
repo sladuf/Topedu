@@ -43,6 +43,12 @@ html, body {
     margin: auto;
     width: 80%;
 }
+
+.level{
+    height:50vh;
+    overflow:scroll;
+}
+
 .text_box {
     
     border: 1px solid #bebaba;

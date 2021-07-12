@@ -10,22 +10,37 @@
     <link href="design/index.css" rel="stylesheet">
 </head>
 <body>
-    <div class='wrap'>    
-        <form method="GET" action="login.php"> 
+    <div class='wrap'>
         <div class='middle'>
-            <img src="design/logo_red_name.png" style="width: 50%;" alt='logo'>   
+            <img src="design/logo_red_name.png" style="width: 50%;" alt='logo'>
+            <form method="GET" action='level_move.php'>
             <div class="level">
-
+                <h2> ⬇️ scroll ⬇️ </h2>
+                <input class='lv_btn' type="submit" value="SeedA" name='level_name'>
+                <input class='lv_btn' type="submit" value="SeedB" name='level_name'>
+                <input class='lv_btn' type="submit" value="SeedC" name='level_name'>
+                <input class='lv_btn' type="submit" value="Root" name='level_name'>
+                <input class='lv_btn' type="submit" value="SproutA" name='level_name'>
+                <input class='lv_btn' type="submit" value="SproutB" name='level_name'>
+                <input class='lv_btn' type="submit" value="Bud" name='level_name'>
+                <input class='lv_btn' type="submit" value="E3" name='level_name'>
+                <input class='lv_btn' type="submit" value="E4" name='level_name'>
+                <input class='lv_btn' type="submit" value="E5" name='level_name'>
+                <input class='lv_btn' type="submit" value="E6" name='level_name'>
+                <input class='lv_btn' type="submit" value="E7" name='level_name'>
+                <input class='lv_btn' type="submit" value="EG" name='level_name'>
+                <input class='lv_btn' type="submit" value="E8" name='level_name'>
+                <input class='lv_btn' type="submit" value="E9" name='level_name'>
+                <input class='lv_btn' type="submit" value="E10" name='level_name'>
+                <h2> ⬆️ scroll ⬆️ </h2>
             </div>
-        </div>
-        </form>  
+            </form>
+        </div> 
     </div>
 
     <div class='error'>
         <h2>지원하지 않는 화면 크기입니다.</h2>
     </div>
-        
+    <script type="text/javascript" src="move.js"></script>
 </body>
 </html>
-# Make all PHP code look like HTML
-AddType application/x-httpd-php .php4 .php .phtml .ph .inc .html .htm
