@@ -110,12 +110,12 @@ background-color: #f8c3c3;
 }
 
   
-@media screen and (max-width:100px) {
+@media screen and (max-width:99px) {
     .wrap {display: none;}
 }
 @media screen and (min-width:100px) and (max-width:1000px) {
     .error {display: none;}
 }
-@media screen and (min-width:1000px) {
+@media screen and (min-width:1001px) {
     .wrap {display: none;}
 }
