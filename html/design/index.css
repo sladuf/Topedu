@@ -44,7 +44,7 @@ html, body {
     width: 80%;
 }
 
-.level{
+.list{
     height:50vh;
     overflow:scroll;
 }
@@ -107,6 +107,12 @@ z-index: -1;
 color: #fff;
 border: 2px solid #fff;
 background-color: #f8c3c3;
+}
+
+#manager_btn{
+    color: #f8c3c3;
+    background-color: #f8c3c3;
+    border: #f8c3c3;
 }
 
   
