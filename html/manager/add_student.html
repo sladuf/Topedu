@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        TOPedu    
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="../design/index.css" rel="stylesheet">
+    <?
+    include '../session.php';
+    ?>
+</head>
+<body>
+    <div class='wrap'>    
+        <div class='middle'>
+            <img src="../design/logo_red_name.png" style="width: 100%;" alt='logo'>
+            <h2 style="color: #E6061F;"><? echo $name; ?></h2>
+            <form method="POST" action='add_student.php'><br>
+                <input class='text_box2' type='text' name="st_name"  placeholder=" NAME"><br>
+                <input class='text_box2' type='text' name="st_id"  placeholder=" ID"><br>
+                <input class='text_box2' type='password' name="st_pw"  placeholder=" Password"><br>
+                <select name='st_level' id='list' class ='select_level'>
+                  </select>
+                  <br>
+                <input class='btn' type="submit" value="추가">
+            </form>
+        </div> 
+    </div>
+    <script type="text/javascript" src="../level.js"></script>
+    <script>
+        var list = document.getElementById('list');
+        var cont="<option value=''>level</option>";
+        for(var i=0; i < level.length; i++){
+            cont += "<option value='"+level[i]+"'>"+level[i]+"</option>";
+        }
+        list.innerHTML=cont;
+    </script>
+    <div class='error'>
+        <h2>지원하지 않는 화면 크기입니다.</h2>
+    </div>
+        
+</body>
+</html>

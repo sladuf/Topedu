@@ -14,6 +14,7 @@
    if ($row != null) {
        $_SESSION['id'] = $Id;
        $_SESSION['name'] = $row['name'];
+       $_SESSION['branch'] = $row['branch'];
        echo "<script>location.href='manager_page.html';</script>";
         }
  
