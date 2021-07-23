@@ -99,6 +99,29 @@ html, body {
   background-color: #f8c3c3;
 }
 
+.btn2 {
+
+    background: #E6061F;
+    border: 1px solid #E6061F;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 3vw;
+}
+
+.btn2::before,
+.btn2::after {
+  background: #f8c3c3;
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+.btn2:hover {
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: #f8c3c3;
+}
+
 .lv_btn {
   background: #E6061F;
   border: 2px solid #fff;
@@ -145,10 +168,10 @@ background-color: #f8c3c3;
 }
 
   
-@media screen and (max-width:99px) {
+@media screen and (max-width:199px) {
     .wrap {display: none;}
 }
-@media screen and (min-width:100px) and (max-width:1000px) {
+@media screen and (min-width:200px) and (max-width:1000px) {
     .error {display: none;}
 }
 @media screen and (min-width:1001px) {

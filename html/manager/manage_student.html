@@ -42,11 +42,13 @@
                 }
             }).done(function(data) {
                 const result = jQuery.parseJSON(data);
-                var res="";
+                var res="<p onclick='window.location.reload()'><u>뒤로가기</u></p>";
                 for(var i=0; i<result.length; i++){
-                    res += "<p value='"+result[i].id+"'>"+result[i].name + "</p>";
+                    res += "<div>"+result[i].name + 
+                    "<button class='btn2' onclick='modify("+result[i].id+")'>수정</button>\
+                    <button class='btn2' onclick='delete("+result[i].id+")'>삭제</button></div>";
                 }
-                res+="<button class='btn' onclick='window.location.reload()'=>뒤로가기</button>";
+
                 $('.middle').html(res);
             });
         }
