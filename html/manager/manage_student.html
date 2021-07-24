@@ -25,17 +25,17 @@
     <script type="text/javascript" src="../level.js"></script>
     <script>
         var list = document.getElementById('list');
-        var cont="<option value=''>level</option>";
-        for(var i=0; i < level.length; i++){
-            cont += "<option value='"+level[i]+"'>"+level[i]+"</option>";
-        }
-        list.innerHTML=cont;
+            var cont="<option value=''>level</option>";
+            for(var i=0; i < level.length; i++){
+                cont += "<option value='"+level[i]+"'>"+level[i]+"</option>";
+            }
+            list.innerHTML=cont;
     </script>
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script>
         function search() {
             $.ajax({
-                url: "level_search.php",
+                url: "search.php",
                 type: "get",
                 data: {
                     st_level : $('#list').val(),
@@ -45,12 +45,43 @@
                 var res="<p onclick='window.location.reload()'><u>뒤로가기</u></p>";
                 for(var i=0; i<result.length; i++){
                     res += "<div>"+result[i].name + 
-                    "<button class='btn2' onclick='modify("+result[i].id+")'>수정</button>\
-                    <button class='btn2' onclick='delete("+result[i].id+")'>삭제</button></div>";
+                    "&nbsp;&nbsp;<button class='btn2' onclick='modify(\""+result[i].id+"\","+i+")'>수정</button>\
+                    <button class='btn2' onclick='del(\""+result[i].id+"\")'>삭제</button></div>\
+                    <div id="+i+"></div>";
                 }
 
                 $('.middle').html(res);
             });
+        }
+        function modify(st_id,i){
+
+                var temp= "#"+i;
+                var res = "<select name='st_level' id='list' class ='select_level'></select><br>";
+                $(temp).html(res);
+                console.log(temp,res);
+
+                var cont="<option value=''>level</option>";
+                for(var i=0; i < level.length; i++){
+                    cont += "<option value='"+level[i]+"'>"+level[i]+"</option>";
+                }
+                $("#list").html(cont);
+            
+        }
+        function del(st_id){
+            var bool = confirm("확인버튼을 누르시면 모든 정보가 지워집니다.\n복구할 수 없습니다.");
+
+            if(bool){
+                $.ajax({
+                url: "delete_student.php",
+                type: "get",
+                data: {
+                    st_id : st_id,
+                }
+            }).done(function(data) {
+                window.location.reload();
+            });
+
+            }
         }
     </script>
     <div class='error'>
