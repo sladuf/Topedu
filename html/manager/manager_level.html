@@ -15,7 +15,7 @@
             <img src="../design/logo_red_name.png" style="width: 50%;" alt='logo'>
             <form method="GET" action='level_manage.php'>
             <div class="list" id='list'>
-                <h2> ⬇️ scroll ⬇️ </h2>
+                
             </div>
             </form>
         </div> 
@@ -27,11 +27,11 @@
     <script type="text/javascript" src="../level.js"></script>
     <script>
         var list = document.getElementById('list');
-        var cont='<h2> ⬇️ scroll ⬇️ </h2>';
+        var cont='';
         for(var i=0; i < level.length; i++){
             cont += "<input class='lv_btn' type='submit' value='"+level[i]+"' name='level_name'>";
         }
-        cont += '<h2> ⬆️ scroll ⬆️ </h2>';
+        cont += '';
         list.innerHTML=cont;
     </script>
 </body>

@@ -25,11 +25,11 @@
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script>
         var list = document.getElementById('list');
-        var cont='<h2> ⬇️ scroll ⬇️ </h2>';
+        var cont='';
         for(var i=0; i < level.length; i++){
             cont += "<button class='lv_btn' onclick=move('"+i+"') >"+level[i]+"</button>";
         }
-        cont += '<h2> ⬆️ scroll ⬆️ </h2>';
+        cont += '';
         list.innerHTML=cont;
 
         var index;
