@@ -33,6 +33,7 @@
     </script>
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script>
+        var All = [];
         function search() {
             $.ajax({
                 url: "search.php",
@@ -44,9 +45,9 @@
                 const result = jQuery.parseJSON(data);
                 var res="<p onclick='window.location.reload()'><u>뒤로가기</u></p>";
                 for(var i=0; i<result.length; i++){
-                    res += "<label class='checkbox'>\
-                            <input type='checkbox' class='checkbox-label' id='"+result[i].name+"'>"
-                            +result[i].name+"</label>";
+                    All.push(result[i].id);
+                    res += "<input type='checkbox' class='checkbox-label' id='"+i+"' value='"+result[i].id+"'>\
+                            <label for='"+i+"'>"+result[i].name+"</label><br>";
                 }
                 res+="<button class='btn2' onclick='modify()'>수정</button>\
                     <button class='btn2' onclick='del()'>삭제</button></div>";
@@ -54,43 +55,44 @@
                 $('.middle').html(res);
             });
         }
-        function modify(st_id){
-            $.ajax({
-                url: "modify_student.html",
-                type: "get",
-                data: {
-                    st_level : $('#list').val(),
+        function modify(){
+            var chk = $(".checkbox-label");
+            var st_id = [];
+            for(var i=0; i<chk.length; i++){
+                if(chk[i].checked == true){
+                   st_id.push(chk[i].value);
                 }
-            }).done(function(data) {
-                const result = jQuery.parseJSON(data);
-                var res="<p onclick='window.location.reload()'><u>뒤로가기</u></p>";
-                for(var i=0; i<result.length; i++){
-                    res += "<div>"+result[i].name + 
-                    "&nbsp;&nbsp;<button class='btn2' onclick='modify(\""+result[i].id+"\","+i+")'>수정</button>\
-                    <button class='btn2' onclick='del(\""+result[i].id+"\")'>삭제</button></div>\
-                    <div id="+i+"></div>";
-                }
-
-                $('.middle').html(res);
-            });
-            
-        }
-        function del(st_id){
-            var bool = confirm("확인버튼을 누르시면 모든 정보가 지워집니다.\n복구할 수 없습니다.");
-
-            if(bool){
-                $.ajax({
-                url: "delete_student.php",
-                type: "get",
-                data: {
-                    st_id : st_id,
-                }
-            }).done(function(data) {
-                alert("모든 정보를 지웠습니다.");
-                window.location.reload();
-            });
-
             }
+           
+        }
+        function del(){
+
+            var chk = $(".checkbox-label");
+            var st_id = [];
+            for(var i=0; i<chk.length; i++){
+                if(chk[i].checked == true){
+                   st_id.push(chk[i].value);
+                }
+            }
+            if(st_id.length > 0){
+                var bool = confirm("확인버튼을 누르시면 모든 정보가 지워집니다.\n복구할 수 없습니다.");
+                if(bool){
+                    $.ajax({
+                    url: "delete_student.php",
+                    type: "get",
+                    data: {
+                        st_id : st_id,
+                    }
+                    }).done(function(data) {
+                        alert("모든 정보를 지웠습니다.");
+                        window.location.reload();
+                    });
+                }   
+            }
+            else{
+                alert("삭제할 학생을 지정 하세요.");
+            }
+            
         }
     </script>
     <div class='error'>

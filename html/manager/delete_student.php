@@ -11,8 +11,10 @@
 
     $mysqli = new mysqli('localhost', 'topedu', 'topedu2021!', 'english');
 
-    $sql = "DELETE FROM student WHERE id = '$st_id'";
-    $res = $mysqli->query($sql);
+    foreach($st_id as $i){
+        $sql = "DELETE FROM student WHERE id = '$i'";
+        $res = $mysqli->query($sql);
+    }
 
     mysqli_close($mysqli);
     
