@@ -44,35 +44,26 @@
                 const result = jQuery.parseJSON(data);
                 var res="<p onclick='window.location.reload()'><u>뒤로가기</u></p>";
                 for(var i=0; i<result.length; i++){
-                    res += "<label class='checkbox'>\
-                            <input type='checkbox' class='checkbox-label' id='"+result[i].name+"'>"
-                            +result[i].name+"</label>";
-                }
-                res+="<button class='btn2' onclick='modify()'>수정</button>\
-                    <button class='btn2' onclick='del()'>삭제</button></div>";
-
-                $('.middle').html(res);
-            });
-        }
-        function modify(st_id){
-            $.ajax({
-                url: "modify_student.html",
-                type: "get",
-                data: {
-                    st_level : $('#list').val(),
-                }
-            }).done(function(data) {
-                const result = jQuery.parseJSON(data);
-                var res="<p onclick='window.location.reload()'><u>뒤로가기</u></p>";
-                for(var i=0; i<result.length; i++){
                     res += "<div>"+result[i].name + 
-                    "&nbsp;&nbsp;<button class='btn2' onclick='modify(\""+result[i].id+"\","+i+")'>수정</button>\
-                    <button class='btn2' onclick='del(\""+result[i].id+"\")'>삭제</button></div>\
+                    "&nbsp;&nbsp; <button class='btn2' onclick='del(\""+result[i].id+"\")'>삭제</button></div>\
                     <div id="+i+"></div>";
                 }
 
                 $('.middle').html(res);
             });
+        }
+        function modify(st_id,i){
+
+                var temp= "#"+i;
+                var res = "<select name='st_level' id='list' class ='select_level'></select><br>";
+                $(temp).html(res);
+                console.log(temp,res);
+
+                var cont="<option value=''>level</option>";
+                for(var i=0; i < level.length; i++){
+                    cont += "<option value='"+level[i]+"'>"+level[i]+"</option>";
+                }
+                $("#list").html(cont);
             
         }
         function del(st_id){
@@ -86,8 +77,9 @@
                     st_id : st_id,
                 }
             }).done(function(data) {
-                alert("모든 정보를 지웠습니다.");
+                alert("삭제가 완료 되었습니다.");
                 window.location.reload();
+                
             });
 
             }
