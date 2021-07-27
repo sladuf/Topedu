@@ -40,7 +40,8 @@
             level_name=level[i];
             index = i;
             mp3_list = Object.keys(file_url[level[i]]);
-            var res="<p onclick='window.location.reload()'><u>뒤로가기</u></p>\
+            var res=level[i]+
+                    "<p onclick='window.location.reload()'><u>뒤로가기</u></p>\
                     <div class='list' id ='list'>";
             for(var j=0; j<mp3_list.length; j++){
                 res += "<button class='btn3' style='widith' onclick='move_mp3(\""+j+"\")'>"+mp3_list[j]+"</button><br>";

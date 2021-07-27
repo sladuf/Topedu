@@ -1,6 +1,30 @@
 var level = ['SeedA', 'SeedB', 'SeedC', 'Root', 'SproutA', 'SproutB', 'Bud', 'E3', 'E4', 'E5', 'E6', 'E7', 'EG', 'E8', 'E9', 'E10'];
 
 var file_url = {
+    SeedA : {
+
+    },
+    SeedB : {
+
+    },
+    SeedC : {
+
+    },
+    Root : {
+
+    },
+    SproutA : {
+
+    },
+    SproutB : {
+
+    },
+    Bud : {
+
+    },
+    E3 : {
+
+    },
     E4 : {
         Unit1 : ['1Y6C946SQ5YQKPlaX-215kR9pfViIbxPR','19VW2r4Ph68BUzeByPMLsUVRwJok8_TrJ'],
         Unit2 : ['1t8hlGro-QfCuxX6Ym9HJkfZyYWRFtUgY','1oM7RCkEvqdl15WeUv2vXJw3InsrTTjUb'],
@@ -66,6 +90,21 @@ var file_url = {
         Unit18 : ['1D0DO3AbwUvzM0jLnoBonsPR-04cP7WnW'],
         Unit19 : ['1K8ci8ExhPNuboKO-o-VlDsZ-Ks7Tn5Wh'],
         Unit20 : ['1O79XxmtDOQ_MmslYzpaZ9Y_6c73NPqS5'],
+    },
+    E7 : {
+
+    },
+    EG : {
+
+    },
+    E8 : {
+
+    },
+    E9 : {
+
+    },
+    E10 : {
+
     }
 
 };
