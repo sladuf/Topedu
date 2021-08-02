@@ -90,21 +90,6 @@ var file_url = {
         Unit18 : ['1D0DO3AbwUvzM0jLnoBonsPR-04cP7WnW'],
         Unit19 : ['1K8ci8ExhPNuboKO-o-VlDsZ-Ks7Tn5Wh'],
         Unit20 : ['1O79XxmtDOQ_MmslYzpaZ9Y_6c73NPqS5'],
-    },
-    E7 : {
-
-    },
-    EG : {
-
-    },
-    E8 : {
-
-    },
-    E9 : {
-
-    },
-    E10 : {
-
     }
 
 };
