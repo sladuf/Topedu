@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        TOPedu    
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="design/index.css" rel="stylesheet">
+</head>
+<body>
+    <div class='wrap'>
+        <div class='middle'>
+            
+            </div>
+        </div> 
+    </div>
+
+    <div class='error'>
+        <h2>지원하지 않는 화면 크기입니다.</h2>
+    </div>
+    <script type="text/javascript" src="level.js"></script>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script>
+
+        var index;
+        var level_name;
+        var mp3_list;
+
+        level_name=level[i];
+        index = i;
+        mp3_list = Object.keys(file_url[level[i]]);
+        var res=level[i]+
+                "<p onclick='window.location.reload()'><u>뒤로가기</u></p>\
+                <div class='list' id ='list'>";
+        for(var j=0; j<mp3_list.length; j++){
+            res += "<button class='btn3' style='widith' onclick='move_mp3(\""+j+"\")'>"+mp3_list[j]+"</button><br>";
+        }
+        res+="</div>"
+        $('.middle').html(res);
+        
+
+        function move_mp3(unit_num){
+            var unit = mp3_list[unit_num];
+            var files = file_url[level_name][unit];
+            var res="<p onclick='move("+index+")'><u>뒤로가기</u></p>";
+            for(var j=0; j<files.length; j++){
+                res += "<audio src='https://docs.google.com/uc?export=open&id="+files[j]+"' \
+                style='width: 100%;' controls></audio>";
+            }
+            $('.middle').html(res);
+        }
+
+    </script>
+</body>
+</html>
