@@ -43,31 +43,64 @@
                 }
             }).done(function(data) {
                 const result = jQuery.parseJSON(data);
-                var res="<p onclick='window.location.reload()'><u>뒤로가기</u></p>";
+                var res="<p onclick='window.location.reload()'><u>뒤로가기</u></p>\
+                        <div class='list'>";
                 for(var i=0; i<result.length; i++){
-                    All.push(result[i].id);
+                    //All.push(result[i].id); 무슨쓰임새더라..?
                     res += "<input type='checkbox' class='checkbox-label' id='"+i+"' value='"+result[i].id+"'>\
-                            <label for='"+i+"'>"+result[i].name+"</label><br>";
+                            <label for='"+i+"'>"+result[i].name+"</label><br>";    
+                    
                 }
-                res+="<button class='btn2' onclick='modify()'>수정</button>\
-                    <button class='btn2' onclick='del()'>삭제</button></div>";
+                res+="</div><button class='btn2' onclick='modify()'>수정</button>\
+                    <button class='btn2' onclick='del()'>삭제</button>";
 
                 $('.middle').html(res);
             });
         }
         function modify(){
-            //popup -> {체크한 애들}의 레벨을 변경하시겠습니까? 되돌리기가 불가능 합니다.
-            //ok하면 레벨 선택창 띄우기
-           
+            var chk = $('input:checkbox[class="checkbox-label"]:checked');
+            
+            if(chk.length == 0){
+                alert("수정할 학생을 지정 하세요.");
+            }
+            else{
+                var st_id = [];
+                for(var i=0; i<chk.length; i++){
+                    st_id.push(chk[i].value);
+                }
+                All = st_id;
+                var cont="<div class=list>";
+                for(var i=0; i < level.length; i++){
+                    cont += "<button class='btn2' style='width:50%;' onclick=change('"+level[i]+"')>"+level[i]+"</button><br>";
+                }
+                cont+="</div>";
+                $('.middle').html(cont);
+            }
+        }
+        function change(lv){
+            var bool = confirm("선택한 학생의 레벨을 변경합니다. \n 되돌릴 수 없습니다.");
+            if(bool){
+                    $.ajax({
+                    url: "modify_level.php",
+                    type: "get",
+                    data: {
+                        st_id : All,
+                        st_level : lv,
+                    }
+                    }).done(function(data) {
+                        alert("레벨이 변경되었습니다.");
+                        window.location.reload();
+                    });
+                    All = [];
+                }
+            
         }
         function del(){
 
-            var chk = $(".checkbox-label");
+            var chk = $('input:checkbox[class="checkbox-label"]:checked');
             var st_id = [];
             for(var i=0; i<chk.length; i++){
-                if(chk[i].checked == true){
-                   st_id.push(chk[i].value);
-                }
+                st_id.push(chk[i].value);
             }
             if(st_id.length > 0){
                 var bool = confirm("확인버튼을 누르시면 모든 정보가 지워집니다.\n복구할 수 없습니다.");
