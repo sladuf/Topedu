@@ -17,9 +17,7 @@
         <div class='middle'>
             <img src="design/logo_red_name.png" style="width: 100%;" alt='logo'>
             <h2>Hello! <? echo $name; ?></h2>
-            <form method="GET" action='level_move.php'>
-                <input class='lv_btn' type="submit" value="<? echo $level; ?>" name='level_name'>
-            </form>
+            <button class=lv_btn onclick="move()" id='level_name' value="<? echo $level; ?>"><? echo $level; ?></button>
             <button class=lv_btn onclick="location.href='level_list.html'">
                 All level
             </button>
@@ -29,6 +27,35 @@
     <div class='error'>
         <h2>지원하지 않는 화면 크기입니다.</h2>
     </div>
+    <script type="text/javascript" src="level.js"></script>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script>
+        var level_name = $('#level_name').val();;
+        var mp3_list;
+
+        function move(){
+            mp3_list = Object.keys(file_url[level_name]);
+            var res=level_name+
+                    "<p onclick='window.location.reload()'><u>뒤로가기</u></p>\
+                    <div class='list' id ='list'>";
+            for(var j=0; j<mp3_list.length; j++){
+                res += "<button class='btn3' style='widith' onclick='move_mp3(\""+j+"\")'>"+mp3_list[j]+"</button><br>";
+            }
+            res+="</div>"
+            $('.middle').html(res);
+        }
+
+        function move_mp3(unit_num){
+            var unit = mp3_list[unit_num];
+            var files = file_url[level_name][unit];
+            var res="<p onclick='move()'><u>뒤로가기</u></p>";
+            for(var j=0; j<files.length; j++){
+                res += "<audio src='https://docs.google.com/uc?export=open&id="+files[j]+"' \
+                style='width: 100%;' controls></audio>";
+            }
+            $('.middle').html(res);
+        }
+    </script>
         
 </body>
 </html>
