@@ -30,10 +30,13 @@
     <script type="text/javascript" src="level.js"></script>
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script>
+        $(".middle").hide();
+        $(".middle").fadeIn(1000);
         var level_name = $('#level_name').val();;
         var mp3_list;
 
         function move(){
+            $(".middle").hide();
             mp3_list = Object.keys(file_url[level_name]);
             var res=level_name+
                     "<p onclick='window.location.reload()'><u>뒤로가기</u></p>\
@@ -43,9 +46,11 @@
             }
             res+="</div>"
             $('.middle').html(res);
+            $(".middle").fadeIn(1000);
         }
 
         function move_mp3(unit_num){
+            $('.middle').html(res);
             var unit = mp3_list[unit_num];
             var files = file_url[level_name][unit];
             var res="<p onclick='move()'><u>뒤로가기</u></p>";
@@ -54,6 +59,7 @@
                 style='width: 100%;' controls></audio>";
             }
             $('.middle').html(res);
+            $(".middle").fadeIn(1000);
         }
     </script>
         

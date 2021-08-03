@@ -24,6 +24,7 @@
     <script type="text/javascript" src="level.js"></script>
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script>
+        $(".middle").hide();
         var list = document.getElementById('list');
         var cont='';
         for(var i=0; i < level.length; i++){
@@ -35,6 +36,7 @@
         var index;
         var level_name;
         var mp3_list;
+        $(".middle").fadeIn(2000);
         
         function move(i){
             level_name=level[i];
@@ -48,6 +50,8 @@
             }
             res+="</div>"
             $('.middle').html(res);
+            $(".middle").hide();
+            $(".middle").fadeIn(1000);
         }
 
         function move_mp3(unit_num){
@@ -59,8 +63,9 @@
                 style='width: 100%;' controls></audio>";
             }
             $('.middle').html(res);
+            $(".middle").hide();
+            $(".middle").fadeIn(1000);
         }
-
     </script>
 </body>
 </html>
