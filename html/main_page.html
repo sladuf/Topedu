@@ -53,15 +53,37 @@
             $('.middle').html(res);
             var unit = mp3_list[unit_num];
             var files = file_url[level_name][unit];
-            var res="<p onclick='move()'><u>뒤로가기</u></p>";
+            var res="<p>"+unit+"</p>\
+            <p onclick='move()'><u>뒤로가기</u></p>";
             for(var j=0; j<files.length; j++){
-                res += "<audio src='https://docs.google.com/uc?export=open&id="+files[j]+"' \
-                style='width: 100%;' controls></audio>";
+                res += "<audio id='audio' onended='done()'>\
+                <source src='https://docs.google.com/uc?export=open&id="+files[j]+"'>\
+                </audio>";
             }
+            res+="<button class='btn2' onclick='start()'>START</button>\
+            <button class='btn2' onclick='stop()'>STOP</button>";
             $('.middle').html(res);
             $(".middle").fadeIn(1000);
         }
+
+        function start(){
+            document.getElementById('audio').play();
+        }
+        function stop(){
+            document.getElementById('audio').pause();
+        }
+        function done(){
+            var result = confirm("확인버튼을 누르세요.");
+            if(result){
+                $.ajax({
+                url: "done_check.php",
+                data:"",
+            }).done(function(data) {
+                alert("숙제를 완료하였습니다.");
+            });
+            }
+        }
     </script>
-        
+       
 </body>
 </html>
