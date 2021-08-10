@@ -12,9 +12,6 @@
 <body>
     <div class='wrap'>
         <div class='middle'>
-            <img src="design/logo_red_name.png" style="width: 50%;" alt='logo'>
-            <div class="list" id ="list">
-            </div>
         </div> 
     </div>
 
@@ -24,18 +21,19 @@
     <script type="text/javascript" src="level.js"></script>
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script>
-        $(".middle").hide();
         var list = document.getElementById('list');
-        var cont='';
+        var cont='<img src="design/logo_red_name.png" style="width: 50%;" alt="logo">\
+            <div class="list" id ="list">';
         for(var i=0; i < level.length; i++){
             cont += "<button class='lv_btn' onclick=move('"+i+"') >"+level[i]+"</button>";
         }
-        cont += '';
-        list.innerHTML=cont;
+        cont += '</div>';
 
         var index;
         var level_name;
         var mp3_list;
+        $('.middle').html(cont);
+        $(".middle").hide();
         $(".middle").fadeIn(2000);
         
         function move(i){
