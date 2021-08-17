@@ -58,27 +58,30 @@
             var res="<p>"+unit+"</p>\
                 <p onclick='move("+index+")'><u>뒤로가기</u></p>";
             for(var j=0; j<files.length; j++){
-                res += "<audio id='audio' onended='done()'>\
-                <source src='https://docs.google.com/uc?export=open&id="+files[j]+"'>\
-                </audio>";
+                res += "<audio id='audio"+j+"' onended='done()'>\
+                <source src='https://docs.google.com/uc?export=open&id="+files[j]+"'></audio>\
+                <button class='btn2' onclick='start("+j+")'>START</button>\
+                <button class='btn2' onclick='back("+j+")'>-5sec</button>\
+                <button class='btn2' onclick='stop("+j+")'>STOP</button><br>";
+                console.log(files[j])
             }
-            res+="<button class='btn2' onclick='start()'>START</button>\
-            <button class='btn2' onclick='back()'>5초 뒤로가기</button>\
-            <button class='btn2' onclick='stop()'>STOP</button>";
             $('.middle').html(res);
             $(".middle").hide();
             $(".middle").fadeIn(1000);
         }
-        function start(){
-            document.getElementById('audio').play();
+        function start(num){
+            var temp = "audio"+num;
+            document.getElementById(temp).play();
         }
-        function stop(){
-            document.getElementById('audio').pause();
+        function stop(num){
+            var temp = "audio"+num;
+            document.getElementById(temp).pause();
         }
-        function back(){
-            var temp = document.getElementById('audio').currentTime;
-            temp-=5;
-            document.getElementById('audio').currentTime = temp;
+        function back(num){
+            var temp = "audio"+num;
+            var sec = document.getElementById(temp).currentTime;
+            sec-=5;
+            document.getElementById(temp).currentTime = sec;
         }
         function done(){
             var result = confirm("확인버튼을 누르세요.");
