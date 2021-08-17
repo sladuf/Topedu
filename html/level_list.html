@@ -63,7 +63,7 @@
                 </audio>";
             }
             res+="<button class='btn2' onclick='start()'>START</button>\
-            <button class='btn2' onclick='back()'>-10초</button>\
+            <button class='btn2' onclick='back()'>5초 뒤로가기</button>\
             <button class='btn2' onclick='stop()'>STOP</button>";
             $('.middle').html(res);
             $(".middle").hide();
@@ -77,7 +77,7 @@
         }
         function back(){
             var temp = document.getElementById('audio').currentTime;
-            temp-=10;
+            temp-=5;
             document.getElementById('audio').currentTime = temp;
         }
         function done(){
