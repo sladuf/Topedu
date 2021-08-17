@@ -61,6 +61,7 @@
                 </audio>";
             }
             res+="<button class='btn2' onclick='start()'>START</button>\
+            <button class='btn2' onclick='back()'>-10초</button>\
             <button class='btn2' onclick='stop()'>STOP</button>";
             $('.middle').html(res);
             $(".middle").fadeIn(1000);
@@ -71,6 +72,11 @@
         }
         function stop(){
             document.getElementById('audio').pause();
+        }
+        function back(){
+            var temp = document.getElementById('audio').currentTime;
+            temp-=10;
+            document.getElementById('audio').currentTime = temp;
         }
         function done(){
             var result = confirm("확인버튼을 누르세요.");
