@@ -47,17 +47,8 @@
                 const result = jQuery.parseJSON(data);
                 var res="<p onclick='window.location.reload()'><u>뒤로가기</u></p>";
                 for(var i=0; i<result.length; i++){
-                    var work = '';
-                    if(result[i].homework==1){
-                        work = 'O';
-                    }
-                    else{
-                        work='X'
-                    }
                     res += "<div style='width:100%;'><div style='width:50%; float:left;'>"+result[i].name+
-                        "</div><div style='width:50%; float:right;'>"+work+"</div></div>";
-
-                    
+                        "</div><div style='width:50%; float:right;'>"+result[i].homework+"</div></div>";
                 }
                 res+="</div><button class='btn2' onclick=reset('"+lv+"')>RESET</button>";
 
