@@ -55,17 +55,17 @@
         function move_mp3(unit_num){
             var unit = mp3_list[unit_num];
             var files = file_url[level_name][unit];
-            var res="<p>"+unit+"</p>\
-                <p onclick='move("+index+")'><u>뒤로가기</u></p>";
+            var res="<p onclick='window.location.reload()' style='float: left; margin: 10%;'><u>뒤로가기</u></p>\
+                <img src='design/red_long_logo.png' style='width: 50%; float: right; margin: 5%;'>\
+                <div class='middle'><p>"+unit+"</p>";
             for(var j=0; j<files.length; j++){
                 res += "<audio id='audio"+j+"' onended='done()'>\
                 <source src='https://docs.google.com/uc?export=open&id="+files[j]+"'></audio>\
-                <button class='btn2' onclick='start("+j+")'>START</button>\
-                <button class='btn2' onclick='back("+j+")'>-5sec</button>\
-                <button class='btn2' onclick='stop("+j+")'>STOP</button><br>";
-                console.log(files[j])
+                <button class='btn' style='margin:5%' onclick='start("+j+")'>START</button><br>\
+                <button class='btn' style='margin:5%' onclick='back("+j+")'>-5sec</button><br>\
+                <button class='btn' style='margin:5%' onclick='stop("+j+")'>STOP</button></div>";
             }
-            $('.middle').html(res);
+            $('.wrap').html(res);
             $(".middle").hide();
             $(".middle").fadeIn(1000);
         }
@@ -90,7 +90,7 @@
                 url: "done_check.php",
                 data:"",
             }).done(function(data) {
-                alert("숙제를 완료하였습니다.");
+                alert(data+"회 들었습니다.");
             });
             }
         }

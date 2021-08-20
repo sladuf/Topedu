@@ -10,5 +10,11 @@
 
     $homework = "UPDATE student SET homework=homework+1 WHERE id = '$id'";
     $res = $mysqli->query($homework);
+
+    $count = "SELECT homework FROM student WHERE id = '$id'";
+    $result = $mysqli->query($count);
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+
+    echo($row['homework']);
     
 ?>
