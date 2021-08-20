@@ -8,7 +8,7 @@
 
     $mysqli = new mysqli('localhost', 'topedu', 'topedu2021!', 'english');
 
-    $homework = "UPDATE student SET homework=1 WHERE id = '$id'";
+    $homework = "UPDATE student SET homework=homework+1 WHERE id = '$id'";
     $res = $mysqli->query($homework);
     
 ?>
