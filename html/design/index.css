@@ -5,6 +5,17 @@
     font-style: normal;
 }
 
+table {
+    margin-left: auto;
+    margin-right:auto;
+}
+    table,td,th {
+    border-collapse : collapse;
+    border : 1px solid black;
+    font-size: 3vw;
+    padding:1vw;
+}
+
 * {
     font-family: 'EliceDigitalBaeum_Regular';
     font-size: 4vw;

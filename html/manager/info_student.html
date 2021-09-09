@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        TOPedu    
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="../design/index.css" rel="stylesheet">
+</head>
+<body>
+    <div class='wrap'>
+        <div class='middle'>
+            <img src="../design/logo_red_name.png" style="width: 50%;" alt='logo'>
+            <div class="list" id ="list">
+            </div>
+        </div> 
+    </div>
+
+    <div class='error'>
+        <h2>지원하지 않는 화면 크기입니다.</h2>
+    </div>
+    <script type="text/javascript" src="../level.js"></script>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script>
+        $(".middle").hide();
+        var list = document.getElementById('list');
+        var cont='';
+        for(var i=0; i < level.length; i++){
+            cont += "<button class='lv_btn' onclick=move('"+level[i]+"') >"+level[i]+"</button>";
+        }
+        cont += '';
+        list.innerHTML=cont;
+
+        $(".middle").fadeIn(2000);
+        
+        
+        function move(lv){
+            $.ajax({
+                url: "view_student.php",
+                type: "get",
+                data: {
+                    level : lv,
+                }
+            }).done(function(data) {
+                const result = jQuery.parseJSON(data);
+                console.log(result, result.length);
+                var res="<p onclick='window.location.reload()'><u>뒤로가기</u></p>";
+                res+="<div class='list' id ='list'><table style='font-size: 3vw;'><th>name</th><th>ID</th><th>PW</th>"
+
+                for(var i=0; i<result.length; i++){
+                    res += "<tr><td>"+result[i].name+"</td><td>"+result[i].id+"</td><td>"+result[i].pw+"</td></tr>";
+                }
+                res+="</table></div>";
+
+                $('.middle').html(res);
+                $(".middle").hide();
+                $(".middle").fadeIn(1000);
+            });
+        }
+    </script>
+</body>
+</html>
