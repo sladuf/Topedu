@@ -23,7 +23,7 @@
                location.replace('add_student.html');</script>";
         }
         else{
-            $insert = "INSERT INTO student VALUES ('$st_id','$st_pw','$st_name','$branch','$st_level')";
+            $insert = "INSERT INTO student VALUES ('$st_id','$st_pw','$st_name','$branch','$st_level',0)";
             $mysqli->query($insert);
             echo "<script> alert(\"추가되었습니다.\");
                location.replace('st_manage.html');</script>";
