@@ -46,11 +46,12 @@
             }).done(function(data) {
                 const result = jQuery.parseJSON(data);
                 var res="<p onclick='window.location.reload()'><u>뒤로가기</u></p>";
+                res+='<div class="list" id ="list">';
                 for(var i=0; i<result.length; i++){
                     res += "<div style='width:100%;'><div style='width:50%; float:left;'>"+result[i].name+
                         "</div><div style='width:50%; float:right;'>"+result[i].homework+"</div></div>";
                 }
-                res+="</div><button class='btn2' onclick=reset('"+lv+"')>RESET</button>";
+                res+="</div><button class='btn2' onclick=reset('"+lv+"')>RESET</button></div>";
 
                 $('.middle').html(res);
                 $(".middle").hide();
