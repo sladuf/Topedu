@@ -12,7 +12,7 @@
 <body>
     <div class='wrap'>
         <div class='middle'>
-        </div>
+        </div> 
     </div>
 
     <div class='error'>
@@ -90,6 +90,7 @@
                 url: "done_check.php",
                 data:"",
             }).done(function(data) {
+                document.getElementById(temp).currentTime = 0;
                 alert(data+"회 들었습니다.");
             });
             }
