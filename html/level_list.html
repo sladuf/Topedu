@@ -59,7 +59,7 @@
                 <img src='design/red_long_logo.png' style='width: 50%; float: right; margin: 5%;'>\
                 <div class='middle'><p>"+unit+"</p>";
             for(var j=0; j<files.length; j++){
-                res += "<audio id='audio"+j+"' onended='done()'>\
+                res += "<audio id='audio"+j+"' onended='done("+j+")'>\
                 <source src='https://docs.google.com/uc?export=open&id="+files[j]+"'></audio>\
                 <button class='btn' style='margin:5%' onclick='start("+j+")'>START</button><br>\
                 <button class='btn' style='margin:5%' onclick='back("+j+")'>-5sec</button><br>\
@@ -83,13 +83,14 @@
             sec-=5;
             document.getElementById(temp).currentTime = sec;
         }
-        function done(){
+        function done(num){
             var result = confirm("확인버튼을 누르세요.");
             if(result){
                 $.ajax({
                 url: "done_check.php",
                 data:"",
             }).done(function(data) {
+                var temp = "audio"+num;
                 document.getElementById(temp).currentTime = 0;
                 alert(data+"회 들었습니다.");
             });
