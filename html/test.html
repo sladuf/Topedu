@@ -8,19 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="design/index.css" rel="stylesheet">
-    <?
-    include 'session.php';
-    ?>
 </head>
 <body>
     <div class='wrap'>
         <div class='middle'>
-            <img src="design/logo_red_name.png" style="width: 100%;" alt='logo'>
-            <h2>Hello! <? echo $name; ?></h2>
-            <button class=lv_btn onclick="move()" id='level_name' value="<? echo $level; ?>"><? echo $level; ?></button>
-            <button class=lv_btn onclick="location.href='level_list.html'">
-                All level
-            </button>
         </div> 
     </div>
 
@@ -30,15 +21,26 @@
     <script type="text/javascript" src="level.js"></script>
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script>
-        $(".middle").hide();
-        $(".middle").fadeIn(1000);
-        var level_name = $('#level_name').val();;
-        var mp3_list;
+        var list = document.getElementById('list');
+        var cont='<img src="design/logo_red_name.png" style="width: 50%;" alt="logo">\
+            <div class="list" id ="list">';
+        for(var i=0; i < level.length; i++){
+            cont += "<button class='lv_btn' onclick=move('"+i+"') >"+level[i]+"</button>";
+        }
+        cont += '</div>';
 
-        function move(){
-            $(".middle").hide();
-            mp3_list = Object.keys(file_url[level_name]);
-            var res=level_name+
+        var index;
+        var level_name;
+        var mp3_list;
+        $('.middle').html(cont);
+        $(".middle").hide();
+        $(".middle").fadeIn(2000);
+        
+        function move(i){
+            level_name=level[i];
+            index = i;
+            mp3_list = Object.keys(file_url[level[i]]);
+            var res=level[i]+
                     "<p onclick='window.location.reload()'><u>뒤로가기</u></p>\
                     <div class='list' id ='list'>";
             for(var j=0; j<mp3_list.length; j++){
@@ -46,23 +48,22 @@
             }
             res+="</div>"
             $('.middle').html(res);
+            $(".middle").hide();
             $(".middle").fadeIn(1000);
         }
 
         function move_mp3(unit_num){
-            console.log(unit_num);
             var unit = mp3_list[unit_num];
             var files = file_url[level_name][unit];
             var res="<p onclick='window.location.reload()' style='float: left; margin: 10%;'><u>뒤로가기</u></p>\
                 <img src='design/red_long_logo.png' style='width: 50%; float: right; margin: 5%;'>\
                 <div class='middle'><p>"+unit+"</p>";
-            
-            res += "<audio id='audio' onended='done()'>\
+            res += "<audio id='audio' onended='done()' controls>\
                 <source src='https://docs.google.com/uc?export=open&id="+files[0]+"'></audio>\
                 <button class='btn' style='margin:5%' onclick='start()'>START</button><br>\
                 <button class='btn' style='margin:5%' onclick='back()'>-5sec</button><br>\
                 <button class='btn' style='margin:5%' onclick='stop()'>STOP</button></div>";
-            
+
             $('.wrap').html(res);
             $(".middle").hide();
             $(".middle").fadeIn(1000);
@@ -100,7 +101,7 @@
             });
             }
         }
-    </script>
        
+    </script>
 </body>
 </html>

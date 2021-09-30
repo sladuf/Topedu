@@ -58,44 +58,50 @@
             var res="<p onclick='window.location.reload()' style='float: left; margin: 10%;'><u>뒤로가기</u></p>\
                 <img src='design/red_long_logo.png' style='width: 50%; float: right; margin: 5%;'>\
                 <div class='middle'><p>"+unit+"</p>";
-            for(var j=0; j<files.length; j++){
-                res += "<audio id='audio"+j+"' onended='done("+j+")'>\
-                <source src='https://docs.google.com/uc?export=open&id="+files[j]+"'></audio>\
-                <button class='btn' style='margin:5%' onclick='start("+j+")'>START</button><br>\
-                <button class='btn' style='margin:5%' onclick='back("+j+")'>-5sec</button><br>\
-                <button class='btn' style='margin:5%' onclick='stop("+j+")'>STOP</button></div>";
-            }
+            res += "<audio id='audio' onended='done()'>\
+                <source src='https://docs.google.com/uc?export=open&id="+files[0]+"'></audio>\
+                <button class='btn' style='margin:5%' onclick='start()'>START</button><br>\
+                <button class='btn' style='margin:5%' onclick='back()'>-5sec</button><br>\
+                <button class='btn' style='margin:5%' onclick='stop()'>STOP</button></div>";
+
             $('.wrap').html(res);
             $(".middle").hide();
             $(".middle").fadeIn(1000);
+            audio = document.getElementById("audio");
+            var temp = 0;
+            audio.addEventListener('timeupdate', function(e){
+                if(audio.currentTime-temp > 1){
+                    audio.currentTime = 0;
+                }
+                else{
+                    temp = audio.currentTime;
+                }
+        })
         }
-        function start(num){
-            var temp = "audio"+num;
-            document.getElementById(temp).play();
+        function start(){
+            document.getElementById("audio").play();
         }
-        function stop(num){
-            var temp = "audio"+num;
-            document.getElementById(temp).pause();
+        function stop(){
+            document.getElementById("audio").pause();
         }
-        function back(num){
-            var temp = "audio"+num;
-            var sec = document.getElementById(temp).currentTime;
+        function back(){
+            var sec = document.getElementById("audio").currentTime;
             sec-=5;
-            document.getElementById(temp).currentTime = sec;
+            document.getElementById("audio").currentTime = sec;
         }
-        function done(num){
+        function done(){
             var result = confirm("확인버튼을 누르세요.");
             if(result){
                 $.ajax({
                 url: "done_check.php",
                 data:"",
             }).done(function(data) {
-                var temp = "audio"+num;
-                document.getElementById(temp).currentTime = 0;
+                document.getElementById("audio").currentTime = 0;
                 alert(data+"회 들었습니다.");
             });
             }
         }
+       
     </script>
 </body>
 </html>
