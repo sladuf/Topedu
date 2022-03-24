@@ -5,7 +5,7 @@
 
     $lv = $_GET['level'];
 
-    $mysqli = new mysqli('localhost', 'topedu', 'topedu2021!', 'english');
+    include '../db_connect.php';
 
     $search = "UPDATE student SET homework=0 WHERE level='$lv' and branch='$branch'";
     $res = $mysqli->query($search);

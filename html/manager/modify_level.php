@@ -10,7 +10,7 @@
     $st_id = $_GET["st_id"];
     $st_level = $_GET["st_level"];
 
-    $mysqli = new mysqli('localhost', 'topedu', 'topedu2021!', 'english');
+    include '../db_connect.php';
 
     foreach($st_id as $i){
         $sql = "UPDATE student SET level='$st_level' WHERE id = '$i'";

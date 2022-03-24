@@ -11,7 +11,7 @@
         $st_id = $_POST["st_id"];
         $st_pw = $_POST["st_pw"];
     
-        $mysqli = new mysqli('localhost', 'topedu', 'topedu2021!', 'english');
+       include '../db_connect.php';
     
         $id_check = "SELECT * FROM student WHERE id = '$st_id'";
         $res = $mysqli->query($id_check);

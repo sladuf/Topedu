@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-   $mysqli = new mysqli('localhost', 'topedu', 'topedu2021!', 'english');
+    include 'db_connect.php';
     
     $Id = $_POST["id"];
     $Pw = $_POST["passwd"];
