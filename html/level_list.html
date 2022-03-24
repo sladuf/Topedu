@@ -18,9 +18,6 @@
         </div> 
     </div>
 
-    <div class='error'>
-        <h2>지원하지 않는 화면 크기입니다.</h2>
-    </div>
     <script type="text/javascript" src="level.js"></script>
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script>
@@ -59,7 +56,7 @@
             var unit = mp3_list[unit_num];
             var files = file_url[level_name][unit];
             var res="<p onclick='window.location.reload()' style='float: left; margin: 10%;'><u>뒤로가기</u></p>\
-                <img src='design/red_long_logo.png' style='width: 50%; float: right; margin: 5%;'>\
+                <img class='top_logo' src='design/red_long_logo.png'>\
                 <div class='middle'><p>"+unit+"</p>";
             res += "<audio id='audio' onended='done()'>\
                 <source src='https://docs.google.com/uc?export=open&id="+files[0]+"'></audio>\
