@@ -43,7 +43,7 @@
                 const result = jQuery.parseJSON(data);
                 console.log(result, result.length);
                 var res="<p onclick='window.location.reload()'><u>뒤로가기</u></p>";
-                res+="<div class='list' id ='list'><table style='font-size: 3vw;'><th>name</th><th>ID</th><th>PW</th>"
+                res+="<div class='list' id ='list'><table><th>name</th><th>ID</th><th>PW</th>"
 
                 for(var i=0; i<result.length; i++){
                     res += "<tr><td>"+result[i].name+"</td><td>"+result[i].id+"</td><td>"+result[i].pw+"</td></tr>";
